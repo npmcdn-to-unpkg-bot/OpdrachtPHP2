@@ -56,13 +56,16 @@
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
+
                     @else
+                        <li><a href="#"><span class="label label-info"><i class="fa fa-plus-circle"></i> Nieuw zoekertje</span></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#"><i class="fa fa-btn fa-user"></i>Profiel</a></li>
+                                <li><a href="{{ url('/user/myprofile') }}"><i class="fa fa-btn fa-user"></i>Profiel</a></li>
+                                <li><a href="#"><i class="fa fa-gavel"></i> Mijn zoekertjes</a></li>
                                 <li><a href="#"><i class="fa fa-btn fa-comments-o"></i>Berichten</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
