@@ -29,6 +29,7 @@ Route::group(['prefix' => 'user','middleware' =>'auth' ,'namespace' => 'Admin'],
     //alle routes voor gebruikersdashboard
     Route::get('/myprofile', 'ProfileController@index');
 
+    Route::resource('products',ProductController::class);
 });
 
 //gewone routes
