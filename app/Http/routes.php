@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@index');
 Route::group(['prefix' => 'user','middleware' =>'auth' ,'namespace' => 'Admin'],function(){
 
     //alle routes voor gebruikersdashboard
+    Route::get('/myprofile', 'ProfileController@index');
 
 });
 

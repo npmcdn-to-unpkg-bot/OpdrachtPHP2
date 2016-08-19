@@ -8,8 +8,14 @@
                     <div class="panel-heading">Mijn Profiel</div>
 
                     <div class="panel-body">
-                       Hier komen de gebruikers gegevens.
-                       Uitprinten met een if-lus.
+
+
+
+                    <p> <Strong> Gebruikersnaam: </Strong>{{ Auth::user()->name }}</p>
+                        <p><Strong>  E-Mail Address: </Strong> {{ Auth::user()->email}}</p>
+                        <p> <Strong>  Woonplaats: </Strong>{{ Auth::User()->zipcode}} {{ Auth::User()->city}}</p>
+                        <p><Strong> Lid sinds: </Strong>{{ Auth::User()->created_at->format('d/m/Y')}}</p>
+
                     </div>
                 </div>
             </div>
