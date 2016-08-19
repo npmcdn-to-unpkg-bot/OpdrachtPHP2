@@ -11,7 +11,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Gebruikersnaam</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -61,6 +61,34 @@
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- extra velden -->
+                        <div class="form-group{{ $errors->has('zipcode') ? ' has-error' : '' }}">
+                            <label for="zipcode" class="col-md-4 control-label">Postcode</label>
+
+                            <div class="col-md-6">
+                                <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}">
+
+                                @if ($errors->has('zipcode'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('zipcode') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-4 control-label">Stad / Gemeente</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}">
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
                                     </span>
                                 @endif
                             </div>

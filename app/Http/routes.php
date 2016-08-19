@@ -11,6 +11,8 @@
 |
 */
 
+//standaard laravel routes voor authentication.
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,15 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
+//gebruikers routes  (alle controllers in Admin map)
+
+Route::group(['prefix' => 'user','middleware' =>'auth' ,'namespace' => 'Admin'],function(){
+
+    //alle routes voor gebruikersdashboard
+
+});
+
+//gewone routes
+
