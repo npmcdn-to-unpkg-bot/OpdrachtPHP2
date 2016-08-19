@@ -1,5 +1,5 @@
 <?php
-/* ImageUpload function
+/* ImageUpload functions
 Copyright Tijs Vervoort
  */
 namespace App\utils;
