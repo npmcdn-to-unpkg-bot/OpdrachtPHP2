@@ -22,8 +22,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //return view('products.index');
+    { //overzicht van zoekertjes van de gebruiker.
+        //ophalen userid
+        $user_id = Auth::User()->id;
+
+        $userproducts= Product::ProductsFromUser($user_id);
+
+
+        return view('profile.myproducts', ['userproducts'=>$userproducts]);
     }
 
     public function show($id)
@@ -100,5 +106,18 @@ class ProductController extends Controller
     public function update()
     {
 
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        // Get name early -> after deletion name is already gone!
+        $name = $product->name;
+
+        $product->delete();
+
+        $message = $name.' is verwijdert.';
+        return redirect()->route('user.products.index')->with('messages.warning',$message);
     }
 }

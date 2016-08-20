@@ -17,5 +17,11 @@ class Product extends Model
             ->select('products.*')
             ->first();
     }
+    public static function ProductsFromUser($user_id)
+    {
+        return self::where('products.user_id', $user_id)
+            ->select('products.*')
+            ->get();
+    }
 
 }
