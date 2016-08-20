@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{$productdetails->title}}</div>
+                    <div class="panel-heading"><h3>{{$productdetails->title}}</h3> Geplaatst op: {{$productdetails->created_at->format('d/m/Y')}} Door: {{$username->name}}</div>
                     <div class="panel-body">
 
                         <div class="row">
@@ -19,7 +19,12 @@
                             </div>
                             <!-- rechtse kollom -->
                             <div class="col-sm-6">
-                                <p>beschrijving etc...</p>
+                                <h3>Naam product:</h3>
+                                <p>{{$productdetails->name}}</p>
+                                <h3>Vraagprijs:</h3>
+                                <p>€ {{$productdetails->price}}</p>
+                                <h3>Beschrijving:</h3>
+                                <p>{{$productdetails->description}}</p>
 
 
                             </div>
@@ -29,6 +34,9 @@
 
 
                     </div>
+                    <div class="panel-footer">
+                       <h3>Categorie: {{$categoryname->name}}</h3>
+                        </div>
                 </div>
             </div>
         </div>

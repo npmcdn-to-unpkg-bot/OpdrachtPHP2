@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\ProductCategory;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,11 +31,13 @@ class ProductController extends Controller
     public function show($id)
     {
         $productdetails = Product::findById($id);
-
+        $username=User::getUserName($productdetails->user_id);
         $catid=ProductCategory::findProductCatId($id);
-        $categoryname= Category::findCatName($catid);
 
-        return view('products.detail', ['productdetails'=>$productdetails, "categoryname"=>$categoryname]);
+
+        $categoryname= Category::findCatName($catid->category_id);
+
+        return view('products.detail', ['productdetails'=>$productdetails, "categoryname"=>$categoryname, "username"=>$username]);
     }
 
     public function edit($id)
