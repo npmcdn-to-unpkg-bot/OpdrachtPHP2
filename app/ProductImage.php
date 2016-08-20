@@ -18,4 +18,11 @@ class ProductImage extends Model
         return asset('uploads/products/' . $this->image);
     }
 
+    public static function GetAllProductImages($product_id)
+    {
+        return self::where('products_images.product_id', $product_id)
+            ->select('products_images.*')
+            ->get();
+    }
+
 }

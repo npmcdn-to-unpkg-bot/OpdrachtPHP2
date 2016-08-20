@@ -18,4 +18,11 @@ class ProductCategory extends Model
             ->select('products_categories.category_id')
             ->first();
     }
+
+    public static function findCatRelation($product_id)
+    {
+        return self::where('products_categories.product_id', $product_id)
+            ->select('products_categories.*')
+            ->first();
+    }
 }

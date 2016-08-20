@@ -80,7 +80,7 @@ class ProductController extends Controller
         }
         //einde imageupload
         //categorie toevoegen
-        //tags toevoegen
+
         if ($request->categories != null)
         {
             //create producttag object
@@ -98,14 +98,71 @@ class ProductController extends Controller
         return redirect()->route('products.detail', ['id' => $linkid]);
     }
 
-    public function edit($id)
+    public function edit($product_id)
     {
+        $product = Product::find($product_id);
+        $catid=ProductCategory::findProductCatId($product_id);
+        //populate dropdown
+        $categories = Category::all()->pluck('name', 'id')->toArray();
+        //selected item voor placeholder
+        $selected= $catid->category_id;
 
+        return view('products.edit', ['product'=>$product, 'categories'=>$categories, 'selected'=>$selected]);
     }
 
-    public function update()
+    public function update(Request $request, $product_id)
     {
+        $product = Product::find($product_id);
 
+        //product values
+        $product->name = $request["name"];
+        $product->title= $request["title"];
+        $product->description= $request["description"];
+        $product->price=$request["price"];
+        $product->save();
+
+        //categoriee
+        if ($request->categories != null)
+        {
+            $categories= $request->categories;
+            foreach ($categories as $category) {
+                $productcategory = ProductCategory::findCatRelation($product_id);
+                $productcategory->category_id = $category;
+                $productcategory->save();
+            }
+        }
+        //change images
+        //imageupload als er geen nieuwe geselecteerd zijn.
+
+        if($request->file('images')['0'] != 0) {
+
+            //bestaande images zoeken en verwijderen
+$deleteimages=ProductImage::GetAllProductImages($product_id);
+
+            foreach($deleteimages as $delete)
+            {
+                $delete->delete();
+            }
+
+
+            $files = $request->file('images');
+            foreach($files as $file) {
+                $imageUpload = new ImageUpload;
+                $productImage= new ProductImage;
+
+                try {
+                    $imageUpload->upload($file, 'uploads/products/')->resize(290);
+                    $productImage->image = $imageUpload->getFilename();
+                    $productImage->product_id = $product->id;
+                } catch (\Exception $e) {
+                    throw $e;
+                }
+                $productImage->save();
+            }
+        }
+        //einde imageupload
+        $message = $product->name.' is aangepast';
+        return redirect()->route('user.products.index')->with('messages.warning',$message);
     }
 
     public function destroy(Request $request, $id)
