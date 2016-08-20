@@ -19,6 +19,7 @@
                                 <th>Omschrijving</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             </thead>
 
@@ -47,8 +48,12 @@
                                         <form action="{{ route('user.products.destroy',$userproduct->id) }}" method="POST">
                                             {!! csrf_field() !!}
                                             <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit"  class="btn btn-rounded btn-warning btn-xs">Verwijderen</button>
+                                        <button type="submit"  class="btn btn-rounded btn-danger btn-xs">Verwijderen</button>
                                             </form>
+                                    </td>
+                                    <td class="text-right">
+                                        <a type="button" href="{{ route('products.detail',$userproduct->id) }}"
+                                           class="btn btn-rounded btn-primary btn-xs">Bekijken</a>
                                     </td>
                                 </tr>
                             @endforeach

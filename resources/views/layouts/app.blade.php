@@ -66,7 +66,7 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/user/myprofile') }}"><i class="fa fa-btn fa-user"></i>Profiel</a></li>
-                                <li><a href="#"><i class="fa fa-gavel"></i> Mijn zoekertjes</a></li>
+                                <li><a href="{{ url('/user/products') }}"><i class="fa fa-gavel"></i> Mijn zoekertjes</a></li>
                                 <li><a href="#"><i class="fa fa-btn fa-comments-o"></i>Berichten</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>

@@ -9,15 +9,18 @@
                     <div class="panel-body">
 
                         <div class="row">
-                            <!-- linkse kollom -->
+                            <!-- linkse kolom -->
                             <div class="col-sm-6"> <!--Hier images uitprinten -->
-                                <div class="main-carousel" data-flickity='{ "cellAlign": "center", "contain": true, "freeScroll":false, "wrapAround":true }'>
-                                    <div class="carousel-cell"><img src="http://www.w3schools.com/html/pic_mountain.jpg" alt="Mountain View" style="width:304px;height:228px;"></div>
-                                    <div class="carousel-cell"><img src="http://www.w3schools.com/html/pic_mountain.jpg" alt="Mountain View" style="width:304px;height:228px;"></div>
-                                    <div class="carousel-cell"><img src="http://www.w3schools.com/html/pic_mountain.jpg" alt="Mountain View" style="width:304px;height:228px;"></div>
+                                <div class="main-carousel" data-flickity='{ "cellAlign":"center", "freeScroll":false, "wrapAround":true, "pageDots":false }'>
+                                    @foreach ($images as $image)
+                                        <div class="carousel-cell"><img src="{{$image->GetImageUrl()}}" alt="ProductImage" ></div>
+                                    @endforeach
+                                        @if (count($images) == 0)
+                                            <div class="carousel-cell"><img src="{{asset('assets/images/default.jpg')}}" alt="ProductImage" ></div>
+                                        @endif
                                 </div>
                             </div>
-                            <!-- rechtse kollom -->
+                            <!-- rechtse kolom -->
                             <div class="col-sm-6">
                                 <h3>Naam product:</h3>
                                 <p>{{$productdetails->name}}</p>

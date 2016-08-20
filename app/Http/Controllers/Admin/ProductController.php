@@ -61,7 +61,7 @@ class ProductController extends Controller
         $product->save();
 
         //imageupload in aparte db
-        if($request->file('images') != null) {
+        if($request->file('images')['0'] != 0)  {
             $files = $request->file('images');
 
             foreach($files as $file) {
@@ -69,7 +69,7 @@ class ProductController extends Controller
                 $productImage= new ProductImage;
 
                 try {
-                    $imageUpload->upload($file, 'uploads/products/')->resize(290);
+                    $imageUpload->upload($file, 'uploads/products/')->resize(350);
                     $productImage->image = $imageUpload->getFilename();
                     $productImage->product_id = $product->id;
                 } catch (\Exception $e) {
@@ -151,7 +151,7 @@ $deleteimages=ProductImage::GetAllProductImages($product_id);
                 $productImage= new ProductImage;
 
                 try {
-                    $imageUpload->upload($file, 'uploads/products/')->resize(290);
+                    $imageUpload->upload($file, 'uploads/products/')->resize(350);
                     $productImage->image = $imageUpload->getFilename();
                     $productImage->product_id = $product->id;
                 } catch (\Exception $e) {

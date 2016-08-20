@@ -23,6 +23,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //alle zoekertjes op homepage!
     public function index()
     {
         //return view('products.index');
@@ -37,16 +38,9 @@ class ProductController extends Controller
 
         $categoryname= Category::findCatName($catid->category_id);
 
-        return view('products.detail', ['productdetails'=>$productdetails, "categoryname"=>$categoryname, "username"=>$username]);
+        //get images
+        $images=ProductImage::GetAllProductImages($id);
+        return view('products.detail', ['productdetails'=>$productdetails, "categoryname"=>$categoryname, "username"=>$username, "images"=>$images]);
     }
 
-    public function edit($id)
-    {
-
-    }
-
-    public function update()
-    {
-
-    }
 }
