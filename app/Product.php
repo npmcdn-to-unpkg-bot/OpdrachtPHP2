@@ -11,6 +11,11 @@ class Product extends Model
     //add timestamps
     public $timestamps = true;
 
-
+    public static function findById($id)
+    {
+        return self::where('products.id', $id)
+            ->select('products.*')
+            ->first();
+    }
 
 }

@@ -12,4 +12,10 @@ class Category extends Model
     public $timestamps= false;
 
 
+    public static function findCatName($category_id)
+    {
+        return self::where('categories.id', $category_id)
+            ->select('categories.name')
+            ->first();
+    }
 }

@@ -12,6 +12,10 @@ class ProductImage extends Model
     public $timestamps = false;
 
 
-
+    //get image string
+    public function getImageUrl()
+    {
+        return asset('uploads/products/' . $this->image);
+    }
 
 }

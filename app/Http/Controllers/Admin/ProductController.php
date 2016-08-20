@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+
     }
     public function create()
     {
@@ -87,7 +87,7 @@ class ProductController extends Controller
             }
         }
 
-
+        //nog een return pagina fixen ->laten terugkeren naar show zoekertje
     }
 
     public function edit($id)
