@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3>{{$productdetails->title}}</h3> Geplaatst op: {{$productdetails->created_at->format('d/m/Y')}} Door: {{$username->name}}</div>
+                    <div class="panel-heading"><h3>{{$productdetails->title}}</h3> Geplaatst op: {{$productdetails->created_at->format('d/m/Y')}} Door: <a href="{{ url('/user/'.$productdetails->user_id) }}">{{$username->name}}</a></div>
                     <div class="panel-body">
 
                         <div class="row">

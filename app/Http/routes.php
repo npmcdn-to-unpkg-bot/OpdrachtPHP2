@@ -34,3 +34,5 @@ Route::group(['prefix' => 'user','middleware' =>'auth' ,'namespace' => 'Admin'],
 
 //gewone routes
 Route::get('products/{id}',['as' => 'products.detail', 'uses' => 'ProductController@show' ]);
+
+Route::get('user/{id}',['as' => 'profile.show', 'uses' => 'UserController@show' ]);

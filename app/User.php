@@ -24,6 +24,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public static function getUserById($user_id)
+    {
+        return self::where('users.id', $user_id)
+            ->select('users.*')
+            ->first();
+    }
+
     public static function getUserName($user_id)
     {
         return self::where('users.id', $user_id)

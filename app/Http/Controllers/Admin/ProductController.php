@@ -86,8 +86,10 @@ class ProductController extends Controller
                 $productcategory->save();
             }
         }
+       $linkid= $product->id;
 
         //nog een return pagina fixen ->laten terugkeren naar show zoekertje
+        return redirect()->route('products.detail', ['id' => $linkid]);
     }
 
     public function edit($id)
