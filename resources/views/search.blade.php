@@ -3,7 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-2">
+            @if($keyword != null)
+            Gezocht op: {{$keyword}}@endif</div>
+        <div class="col-md-10">
             {!! Form::open(array('route'=>'queries.search','class'=>'form navbar-form navbar-right searchform')) !!}
             {!! Form::text('search', null,array('required','class'=>'form-control','placeholder'=>'Zoeken')) !!}
             {!! Form::submit('Search',array('class'=>'btn btn-default')) !!}
@@ -17,7 +20,9 @@
                 <div class="panel-body">
 
 
-
+                    @if (count($products) === 0)
+                        <p>Geen resultaten gevonden voor: {{$keyword}}</p>
+                       @else
 
     @foreach($products as $p)
 
@@ -46,6 +51,7 @@
                                 </div>
                         </div>
     @endforeach
+                    @endif
         {{ $products->links() }}
 
 

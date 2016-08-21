@@ -39,7 +39,8 @@ Route::group(['prefix' => 'user','middleware' =>'auth' ,'namespace' => 'Admin'],
 Route::get('products/{id}',['as' => 'products.detail', 'uses' => 'ProductController@show' ]);
 
 Route::get('user/{id}',['as' => 'profile.show', 'uses' => 'UserController@show' ]);
-
+//zoeken
+Route::post('search', ['as' => 'queries.search', 'uses' => 'QueryController@search']);
 
 //messaging system
 Route::group(['prefix' => 'messages'], function () {

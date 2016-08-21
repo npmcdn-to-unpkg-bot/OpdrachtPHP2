@@ -43,4 +43,14 @@ class Product extends Model
     }
 
 
+    public static function Search($keyword)
+    {
+        return self::select('products.*')
+            ->with('images','category')
+            ->where("name", "LIKE","%".$keyword."%")
+               ->orWhere("title", "LIKE", "%".$keyword."%")
+               ->orWhere("description", "LIKE", "%".$keyword."%")
+                ->paginate(8);
+    }
+
 }
