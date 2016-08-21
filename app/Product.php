@@ -26,7 +26,7 @@ class Product extends Model
     public static function getAllSorted()
     {
         return self::select('products.*')
-            ->with('images')
+            ->with('images','category')
             ->orderBy('created_at','DESC')
             ->paginate(8);
     }
@@ -38,7 +38,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\categories');
+        return $this->hasOne('App\Category','id','category_id');
     }
 
 }

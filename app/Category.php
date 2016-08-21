@@ -18,4 +18,5 @@ class Category extends Model
             ->select('categories.name')
             ->first();
     }
+
 }

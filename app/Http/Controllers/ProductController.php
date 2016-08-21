@@ -27,8 +27,6 @@ class ProductController extends Controller
     public function index()
     {
         $products=Product::getAllSorted();
-
-
         return view('welcome',['products'=>$products]);
 
     }
@@ -37,10 +35,10 @@ class ProductController extends Controller
     {
         $productdetails = Product::findById($id);
         $username=User::getUserName($productdetails->user_id);
-        $catid=ProductCategory::findProductCatId($id);
 
 
-        $categoryname= Category::findCatName($catid->category_id);
+
+        $categoryname= Category::findCatName($productdetails->category_id);
 
         //get images
         $images=ProductImage::GetAllProductImages($id);

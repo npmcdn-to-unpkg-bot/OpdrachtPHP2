@@ -25,4 +25,7 @@ class ProductCategory extends Model
             ->select('products_categories.*')
             ->first();
     }
+
+
+
 }

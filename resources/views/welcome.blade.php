@@ -27,7 +27,7 @@
                                 <h3><a href="{{ route('products.detail',$p->id) }}">{{$p->title}}</a></h3>
                                 <h4>{{$p->name}}</h4>
                                 <p>€ {{$p->price}}</p>
-                                <p><strong>Categorie:</strong> test</p>
+                                <p><strong>Categorie:</strong> {{$p->category->name}}</p>
                             </div>
                             <div class="col-md-3">
 

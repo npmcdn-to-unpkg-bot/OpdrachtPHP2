@@ -57,7 +57,7 @@ class ProductController extends Controller
         $product->description= $request["description"];
         $product->price=$request["price"];
         $product->user_id=Auth::User()->id;
-
+        $product->category_id=$request->categories['0'] ;
         $product->save();
 
         //imageupload in aparte db
@@ -79,19 +79,21 @@ class ProductController extends Controller
             }
         }
         //einde imageupload
-        //categorie toevoegen
 
-        if ($request->categories != null)
-        {
-            //create producttag object
-            $categories= $request->categories;
-            foreach ($categories as $category) {
-                $productcategory = new ProductCategory();
-                $productcategory->product_id = $product->id;
-                $productcategory->category_id = $category;
-                $productcategory->save();
-            }
-        }
+        //categorie toevoegen
+        /*
+               if ($request->categories != null)
+
+                   /*
+                   //create producttag object
+                   $categories= $request->categories;
+                   foreach ($categories as $category) {
+                       $productcategory = new ProductCategory();
+                       $productcategory->product_id = $product->id;
+                       $productcategory->category_id = $category;
+                       $productcategory->save();
+                   }
+        }*/
        $linkid= $product->id;
 
         //nog een return pagina fixen ->laten terugkeren naar show zoekertje
@@ -101,11 +103,11 @@ class ProductController extends Controller
     public function edit($product_id)
     {
         $product = Product::find($product_id);
-        $catid=ProductCategory::findProductCatId($product_id);
+
         //populate dropdown
         $categories = Category::all()->pluck('name', 'id')->toArray();
         //selected item voor placeholder
-        $selected= $catid->category_id;
+        $selected= $product->category_id;
 
         return view('products.edit', ['product'=>$product, 'categories'=>$categories, 'selected'=>$selected]);
     }
@@ -119,9 +121,11 @@ class ProductController extends Controller
         $product->title= $request["title"];
         $product->description= $request["description"];
         $product->price=$request["price"];
+        $product->category_id=$request->categories['0'] ;
         $product->save();
 
         //categoriee
+        /*
         if ($request->categories != null)
         {
             $categories= $request->categories;
@@ -130,7 +134,7 @@ class ProductController extends Controller
                 $productcategory->category_id = $category;
                 $productcategory->save();
             }
-        }
+        }*/
         //change images
         //imageupload als er geen nieuwe geselecteerd zijn.
 
