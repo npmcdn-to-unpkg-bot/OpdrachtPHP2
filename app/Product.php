@@ -23,6 +23,7 @@ class Product extends Model
             ->select('products.*')
             ->get();
     }
+
     public static function getAllSorted()
     {
         return self::select('products.*')
@@ -40,5 +41,6 @@ class Product extends Model
     {
         return $this->hasOne('App\Category','id','category_id');
     }
+
 
 }

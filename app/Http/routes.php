@@ -29,8 +29,10 @@ Route::group(['prefix' => 'user','middleware' =>'auth' ,'namespace' => 'Admin'],
 
     Route::resource('products',ProductController::class);
 
-    //favorite jquery
+    //favorite jqueryroute
     Route::post('favorite/addfavorite', array('as' => 'favorite.addfavorite', 'uses' => 'FavoriteController@addfavorite'));
+    //route voor index
+    Route::resource('favorites',FavoriteController::class);
 });
 
 //gewone routes

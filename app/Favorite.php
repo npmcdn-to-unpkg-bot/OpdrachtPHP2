@@ -17,4 +17,12 @@ class Favorite extends Model
             ->select('favorites.*')
             ->first();
     }
+
+    public static function FavoriteProductIds($user_id)
+    {
+        return self::select('favorites.*')
+            ->where('from_user_id',$user_id)
+            ->get();
+    }
+
 }

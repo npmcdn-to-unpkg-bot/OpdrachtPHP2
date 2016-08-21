@@ -12,7 +12,20 @@ use Illuminate\Support\Facades\Auth;
 class FavoriteController extends Controller
 {
 
+    public function index()
+    { //overzicht van zoekertjes van de gebruiker.
+        //ophalen userid
+        $user_id = Auth::User()->id;
 
+        $productids= Favorite::FavoriteProductIds($user_id);
+        $idarray= $productids->pluck('product_id');
+
+        $userproducts= Product::findMany($idarray);
+
+
+
+        return view('profile.myfavorites', ['userproducts'=>$userproducts]);
+    }
 
     public function addfavorite(Request $request)
     {
