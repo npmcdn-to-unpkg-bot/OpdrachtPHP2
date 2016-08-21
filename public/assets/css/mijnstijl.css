@@ -5,4 +5,11 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+.productimg{
+margin:15px;
+    width:auto;
+    height:125px;
 
+}
+
+.underline{border-bottom:solid 1px darkgray;}

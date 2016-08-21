@@ -23,5 +23,22 @@ class Product extends Model
             ->select('products.*')
             ->get();
     }
+    public static function getAllSorted()
+    {
+        return self::select('products.*')
+            ->with('images')
+            ->orderBy('created_at','DESC')
+            ->paginate(8);
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\ProductImage');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\categories');
+    }
 
 }

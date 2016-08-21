@@ -24,5 +24,9 @@ class ProductImage extends Model
             ->select('products_images.*')
             ->get();
     }
+    public function products()
+    {
+        return $this->belongsTo('App\Product');
 
+    }
 }

@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\ProductCategory;
 use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
@@ -26,7 +26,11 @@ class ProductController extends Controller
     //alle zoekertjes op homepage!
     public function index()
     {
-        //return view('products.index');
+        $products=Product::getAllSorted();
+
+
+        return view('welcome',['products'=>$products]);
+
     }
 
     public function show($id)
