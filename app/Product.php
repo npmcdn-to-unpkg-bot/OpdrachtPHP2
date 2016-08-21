@@ -31,6 +31,14 @@ class Product extends Model
             ->orderBy('created_at','DESC')
             ->paginate(8);
     }
+    public static function getAllSortedCat($cat)
+    {
+        return self::select('products.*')
+            ->with('images','category')
+            ->where('category_id',$cat)
+            ->orderBy('created_at','DESC')
+            ->paginate(8);
+    }
 
     public function images()
     {

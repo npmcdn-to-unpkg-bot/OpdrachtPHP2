@@ -13,7 +13,7 @@
 
 //standaard laravel routes voor authentication.
 
-Route::get('/',['uses' => 'ProductController@index' ]);
+Route::get('/',['as'=>'test','uses' => 'ProductController@index' ]);
 
 Route::auth();
 

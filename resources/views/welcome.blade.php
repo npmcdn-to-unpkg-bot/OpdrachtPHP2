@@ -4,6 +4,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <ul class="list-inline">
+                Categorieën:
+            @foreach($cats as $c)
+
+
+                <li><a href="{{route('test','cat='. $c->id)}}">{{$c->name}}</a></li>
+
+            @endforeach
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+    <div class="row">
+        <div class="col-md-12">
             {!! Form::open(array('route'=>'queries.search','class'=>'form navbar-form navbar-right searchform')) !!}
             {!! Form::text('search', null,array('required','class'=>'form-control','placeholder'=>'Zoeken')) !!}
             {!! Form::submit('Search',array('class'=>'btn btn-default')) !!}

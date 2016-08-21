@@ -27,8 +27,20 @@ class ProductController extends Controller
     //alle zoekertjes op homepage!
     public function index()
     {
-        $products=Product::getAllSorted();
-        return view('welcome',['products'=>$products]);
+
+        $cats=Category::all();
+
+        $filter = request()->get('cat');
+        if ($filter != null)
+        {
+            $products = Product::getAllSortedCat($filter);
+        }
+        else
+        {
+            $products=Product::getAllSorted();
+        }
+
+        return view('welcome',['products'=>$products, 'cats'=>$cats]);
 
     }
 
