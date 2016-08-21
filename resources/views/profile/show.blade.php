@@ -5,7 +5,11 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3>{{$user->name}}</h3> <a href="#"><span class="label label-info"><i class="fa fa-comment"></i> Stuur Bericht</span></a></div>
+                    <div class="panel-heading"><h3>{{$user->name}}</h3>
+                        @if ($user->id != Auth::user()->id )
+                        <a href="{{ url('/messages/create/'.$user->id) }}"><span class="label label-info"><i class="fa fa-comment"></i> Stuur Bericht</span></a>
+                        @endif
+                    </div>
 
                     <div class="panel-body">
 

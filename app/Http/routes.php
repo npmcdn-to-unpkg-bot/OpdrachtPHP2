@@ -40,3 +40,14 @@ Route::get('products/{id}',['as' => 'products.detail', 'uses' => 'ProductControl
 
 Route::get('user/{id}',['as' => 'profile.show', 'uses' => 'UserController@show' ]);
 
+
+//messaging system
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+    Route::get('create/{to_user}', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+    Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+    Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+//delete thread
+    Route::get('delete/{id}', ['as' => 'messages.delete', 'uses' => 'MessagesController@destroy']);
+});
