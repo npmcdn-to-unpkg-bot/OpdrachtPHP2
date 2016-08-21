@@ -12,6 +12,7 @@
                 <li><a href="{{route('test','cat='. $c->id)}}">{{$c->name}}</a></li>
 
             @endforeach
+                <li><a href="{{route('test')}}">Alle categorieën</a></li>
             </ul>
         </div>
     </div>
