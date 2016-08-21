@@ -151,7 +151,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
-
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
         /*
          * Package Service Providers...
          */
