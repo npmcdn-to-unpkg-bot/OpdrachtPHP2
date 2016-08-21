@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\ProductCategory;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -14,6 +14,7 @@ use Auth;
 use App\Product;
 use App\Category;
 use App\ProductImage;
+use App\ProductCategory;
 class ProductController extends Controller
 {
     /**

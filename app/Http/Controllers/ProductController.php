@@ -16,6 +16,7 @@ use Auth;
 use App\Product;
 use App\Category;
 use App\ProductImage;
+use App\Favorite;
 class ProductController extends Controller
 {
     /**
@@ -36,13 +37,22 @@ class ProductController extends Controller
         $productdetails = Product::findById($id);
         $username=User::getUserName($productdetails->user_id);
 
-
-
         $categoryname= Category::findCatName($productdetails->category_id);
 
+
+        $checkfavorited=Favorite::findByUserId($id);
+
+        if($checkfavorited!=null){
+
+            $checked=1;
+        }
+        else
+        {
+            $checked=0;
+        }
         //get images
         $images=ProductImage::GetAllProductImages($id);
-        return view('products.detail', ['productdetails'=>$productdetails, "categoryname"=>$categoryname, "username"=>$username, "images"=>$images]);
+        return view('products.detail', ['productdetails'=>$productdetails, "categoryname"=>$categoryname, "username"=>$username, "images"=>$images, "checked"=>$checked]);
     }
 
 }

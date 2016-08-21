@@ -28,9 +28,13 @@ Route::group(['prefix' => 'user','middleware' =>'auth' ,'namespace' => 'Admin'],
     Route::get('/myprofile', 'ProfileController@index');
 
     Route::resource('products',ProductController::class);
+
+    //favorite jquery
+    Route::post('favorite/addfavorite', array('as' => 'favorite.addfavorite', 'uses' => 'FavoriteController@addfavorite'));
 });
 
 //gewone routes
 Route::get('products/{id}',['as' => 'products.detail', 'uses' => 'ProductController@show' ]);
 
 Route::get('user/{id}',['as' => 'profile.show', 'uses' => 'UserController@show' ]);
+
